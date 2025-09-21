@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import authLoader from "./loaders/unit/authLoader";
+import Logout from "./components/Logout";
 
 const routes = [
   {
@@ -22,6 +25,16 @@ const routes = [
         element: <Login />
       }
     ]
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    loader: authLoader,
+    hydrateFallbackElement: <div>Loading...</div>
+  },
+  {
+    path: "logout",
+    element: <Logout />
   }
 ]
 
