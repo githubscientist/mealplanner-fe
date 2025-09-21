@@ -1,6 +1,7 @@
 import { useState } from "react";
 import authServices from "../services/authServices";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -14,12 +15,16 @@ const Register = () => {
         // Handle registration logic here
         authServices.register({ name, email, password })
             .then(data => {
-                alert(data.message || "Registration successful!");
+                toast.success(data.message || "Registration successful!", {
+                    position: "bottom-right"
+                });
 
                 navigate("/login");
             })
             .catch(err => {
-                alert(err.message || "Registration failed!");
+                toast.error(err.message || "Registration failed!", {
+                    position: "bottom-right"
+                });
             })
     }
 

@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import authLoader from "./loaders/unit/authLoader";
 import Logout from "./components/Logout";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const routes = [
   {
@@ -49,12 +51,17 @@ const router = createBrowserRouter(routes, {
 })
 
 const App = () => {
-  return <RouterProvider
-    router={router}
-    future={{
-      v7_startTransition: true,
-    }}
-  />
+  return (
+    <>
+      <RouterProvider
+        router={router}
+        future={{
+          v7_startTransition: true,
+        }}
+      />
+      <ToastContainer />
+    </>
+  )
 }
 
 export default App;

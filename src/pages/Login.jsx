@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import authServices from "../services/authServices";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -13,11 +14,15 @@ const Login = () => {
 
         authServices.login({ email, password })
             .then(response => {
-                alert(response.message || "Login successful!");
+                toast.success(response.message || "Login successful!", {
+                    position: "bottom-right"
+                });
                 navigate("/dashboard");
             })
             .catch(err => {
-                alert(err.message || "Login failed!");
+                toast.error(err.message || "Login failed!", {
+                    position: "bottom-right"
+                });
             })
     }
 
