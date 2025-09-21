@@ -1,9 +1,27 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 const routes = [
   {
     path: "/",
-    element: <h1>Hello World!</h1>
+    element: <Home />,
+    children: [
+      {
+        index: true,
+        element: <About />
+      },
+      {
+        path: "register",
+        element: <Register />
+      },
+      {
+        path: "login",
+        element: <Login />
+      }
+    ]
   }
 ]
 
